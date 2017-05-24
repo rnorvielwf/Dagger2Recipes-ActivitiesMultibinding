@@ -4,6 +4,7 @@ import com.frogermcs.recipes.dagger_activities_multibinding.di.activity.Activity
 import com.frogermcs.recipes.dagger_activities_multibinding.di.activity.ActivityComponentBuilder;
 import com.frogermcs.recipes.dagger_activities_multibinding.di.activity.ActivityModule;
 import com.frogermcs.recipes.dagger_activities_multibinding.di.activity.ActivityScope;
+import com.frogermcs.recipes.dagger_activities_multibinding.di.fragment.FragmentBindingModule;
 
 import dagger.Module;
 import dagger.Subcomponent;
@@ -14,7 +15,10 @@ import dagger.Subcomponent;
 
 @ActivityScope
 @Subcomponent(
-        modules = MainActivityComponent.MainActivityModule.class
+        modules = {
+                MainActivityComponent.MainActivityModule.class,
+                FragmentBindingModule.class
+        }
 )
 public interface MainActivityComponent extends ActivityComponent<MainActivity> {
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:id="@+id/activity_main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,16 +12,34 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Main activity"/>
+        android:text="Main activity" />
+
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.frogermcs.recipes.dagger_activities_multibinding.fragment_one.FragmentOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        tools:layout="@layout/fragment_one" />
+
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.frogermcs.recipes.dagger_activities_multibinding.fragment_two.FragmentTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        tools:layout="@layout/fragment_two" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="openSecondScreen"
-        android:text="Open second activity"/>
+        android:text="Open second activity" />
 </LinearLayout>
