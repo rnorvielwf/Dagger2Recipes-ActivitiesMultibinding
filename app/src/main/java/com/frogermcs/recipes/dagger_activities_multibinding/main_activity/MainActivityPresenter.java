@@ -10,12 +10,13 @@ import javax.inject.Inject;
  */
 
 @ActivityScope
-public class MainActivityPresenter {
-    private final MainActivity activity;
+public class MainActivityPresenter implements MainContract.Presenter {
+
+    private final MainContract.View activity;
     private final Utils utils;
 
     @Inject
-    public MainActivityPresenter(MainActivity activity, Utils utils) {
+    public MainActivityPresenter(MainContract.View activity, Utils utils) {
         this.activity = activity;
         this.utils = utils;
     }

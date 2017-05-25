@@ -11,6 +11,8 @@ import com.frogermcs.recipes.dagger_activities_multibinding.R;
 import com.frogermcs.recipes.dagger_activities_multibinding.di.activity.HasActivitySubcomponentBuilders;
 import com.frogermcs.recipes.dagger_activities_multibinding.di.fragment.FragmentComponentBuilder;
 import com.frogermcs.recipes.dagger_activities_multibinding.di.fragment.HasFragmentSubcomponentBuilders;
+import com.frogermcs.recipes.dagger_activities_multibinding.di.view.HasViewSubcomponentBuilders;
+import com.frogermcs.recipes.dagger_activities_multibinding.di.view.ViewComponentBuilder;
 import com.frogermcs.recipes.dagger_activities_multibinding.second_activity.SecondActivity;
 
 import java.util.Map;
@@ -18,14 +20,16 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-public class MainActivity extends BaseActivity implements HasFragmentSubcomponentBuilders {
+public class MainActivity extends BaseActivity implements MainContract.View, HasFragmentSubcomponentBuilders, HasViewSubcomponentBuilders {
 
     public MainActivityComponent activityComponent;
 
     @Inject
-    MainActivityPresenter mainActivityPresenter;
+    MainContract.Presenter mainActivityPresenter;
     @Inject
     Map<Class<? extends Fragment>, Provider<FragmentComponentBuilder>> fragmentComponentBuilders;
+    @Inject
+    Map<Class<? extends View>, Provider<ViewComponentBuilder>> viewComponentBuilders;
 
     private TextView textView;
 
@@ -56,5 +60,10 @@ public class MainActivity extends BaseActivity implements HasFragmentSubcomponen
     @Override
     public FragmentComponentBuilder getFragmentComponentBuilder(Class<? extends Fragment> fragmentClass) {
         return fragmentComponentBuilders.get(fragmentClass).get();
+    }
+
+    @Override
+    public ViewComponentBuilder getViewComponentBuilder(Class<? extends View> viewClass) {
+        return viewComponentBuilders.get(viewClass).get();
     }
 }

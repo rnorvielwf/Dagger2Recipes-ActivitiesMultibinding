@@ -23,7 +23,11 @@ public class MyApplication extends Application implements HasActivitySubcomponen
     @Inject
     Map<Class<? extends Activity>, Provider<ActivityComponentBuilder>> activityComponentBuilders;
 
-    private AppComponent appComponent;
+    private static AppComponent appComponent;
+
+    public static AppComponent getAppComponent() {
+        return appComponent;
+    }
 
     public static HasActivitySubcomponentBuilders get(Context context) {
         return ((HasActivitySubcomponentBuilders) context.getApplicationContext());
