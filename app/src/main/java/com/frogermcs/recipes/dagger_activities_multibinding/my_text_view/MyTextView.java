@@ -12,7 +12,7 @@ import javax.inject.Inject;
 public class MyTextView extends AppCompatTextView {
 
     @Inject
-    Utils utils;
+    public Utils utils;
 
     public MyTextView(Context context) {
         super(context);

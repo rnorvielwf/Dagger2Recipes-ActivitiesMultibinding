@@ -17,7 +17,7 @@ import javax.inject.Inject;
 public class FragmentOne extends BaseFragment {
 
     @Inject
-    Utils utils;
+    public Utils utils;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
