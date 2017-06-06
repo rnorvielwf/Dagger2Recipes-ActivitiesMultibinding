@@ -5,7 +5,9 @@ package com.frogermcs.recipes.dagger_activities_multibinding;
  */
 
 public class Utils {
+    public static final String TEXT = "hardcoded text";
+
     public String getHardcodedText() {
-        return "hardcoded text";
+        return TEXT;
     }
 }
