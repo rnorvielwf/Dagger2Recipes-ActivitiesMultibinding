@@ -10,7 +10,7 @@ import com.frogermcs.recipes.dagger_activities_multibinding.BaseFragment;
 import com.frogermcs.recipes.dagger_activities_multibinding.R;
 import com.frogermcs.recipes.dagger_activities_multibinding.di.fragment.HasFragmentSubcomponentBuilders;
 
-public class FragmentTwo extends BaseFragment {
+public class FragmentTwo extends BaseFragment<FragmentTwoComponent> {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -18,10 +18,13 @@ public class FragmentTwo extends BaseFragment {
     }
 
     @Override
-    protected void injectMembers(HasFragmentSubcomponentBuilders hasFragmentSubcomponentBuilders) {
-        ((FragmentTwoComponent.Builder) hasFragmentSubcomponentBuilders.getFragmentComponentBuilder(FragmentTwo.class))
+    public FragmentTwoComponent createComponent() {
+        // There aren't actually any dependencies in this class ...
+        HasFragmentSubcomponentBuilders hasFragmentSubcomponentBuilders = (HasFragmentSubcomponentBuilders) getActivity();
+
+        return ((FragmentTwoComponent.Builder) hasFragmentSubcomponentBuilders
+                .getFragmentComponentBuilder(FragmentTwo.class))
                 .fragmentModule(new FragmentTwoComponent.FragmentTwoModule(this))
-                .build()
-                .injectMembers(this);
+                .build();
     }
 }

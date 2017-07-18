@@ -6,6 +6,7 @@ import com.frogermcs.recipes.dagger_activities_multibinding.di.fragment.Fragment
 import com.frogermcs.recipes.dagger_activities_multibinding.di.fragment.FragmentScope;
 
 import dagger.Module;
+import dagger.Provides;
 import dagger.Subcomponent;
 
 @FragmentScope
@@ -20,8 +21,23 @@ public interface FragmentOneComponent extends FragmentComponent<FragmentOne> {
 
     @Module
     class FragmentOneModule extends FragmentModule<FragmentOne> {
+        private final FragmentOneContract.View view;
+
         FragmentOneModule(FragmentOne fragment) {
             super(fragment);
+            view = fragment;
+        }
+
+        @Provides
+        @FragmentScope
+        FragmentOneContract.View provideIdeaBoardMainView() {
+            return view;
+        }
+
+        @Provides
+        @FragmentScope
+        FragmentOneContract.Presenter provideIdeaBoardMainPresenter(FragmentOneContract.Presenter presenter) {
+            return presenter;
         }
     }
 }
